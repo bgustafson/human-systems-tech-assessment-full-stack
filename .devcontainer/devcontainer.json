@@ -1,0 +1,38 @@
+{
+  "name": "Task Manager Assessment",
+
+  // Uses Docker-in-Docker so docker-compose works inside the Codespace itself,
+  // matching what a candidate would have on a locally-configured machine.
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+
+  "forwardPorts": [4000, 5173],
+  "portsAttributes": {
+    "4000": { "label": "Backend API", "onAutoForward": "notify" },
+    "5173": { "label": "Frontend (Vite)", "onAutoForward": "openPreview" }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+
+  // Installs dependencies for both frontend and backend automatically on
+  // Codespace creation, so the candidate doesn't burn assessment time on `npm install`.
+  "postCreateCommand": "cd backend && npm install && cd ../frontend && npm install",
+
+  "remoteUser": "node"
+}
