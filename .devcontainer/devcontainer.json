@@ -6,7 +6,9 @@
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
 
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+     "moby": false
+   },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
     }
