@@ -6,7 +6,8 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      "/api": "http://localhost:4000",
+      // docker-compose sets API_URL to the backend service; locally it's localhost.
+      "/api": process.env.API_URL || "http://localhost:4000",
     },
   },
 });
